@@ -5,8 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.menesdurak.roomnavigationrecyclerviewcrud.R
+import com.menesdurak.roomnavigationrecyclerviewcrud.data.UserViewModel
 import com.menesdurak.roomnavigationrecyclerviewcrud.databinding.FragmentListBinding
 
 class ListFragment : Fragment() {
@@ -16,6 +20,8 @@ class ListFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private lateinit var mUserViewModel: UserViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -23,6 +29,18 @@ class ListFragment : Fragment() {
     ): View? {
         _binding = FragmentListBinding.inflate(inflater, container, false)
         val view = binding.root
+
+        //RecyclerView
+        val adapter = ListAdapter()
+        val recyclerView = binding.recyclerview
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        //UserViewModel
+        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        mUserViewModel.readAllData.observe(viewLifecycleOwner, Observer { user ->
+            adapter.setData(user)
+        })
 
         //Navigating from ListFragment to AddFragment
         binding.floatingActionButton.setOnClickListener {
