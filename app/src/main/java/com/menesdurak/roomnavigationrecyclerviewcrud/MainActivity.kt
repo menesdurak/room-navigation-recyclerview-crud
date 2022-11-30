@@ -18,4 +18,9 @@ class MainActivity : AppCompatActivity() {
         //For displaying fragments name in the actionbar
         setupActionBarWithNavController(navController)
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.fragmentContainerView)
+        return navController.navigateUp() || super.onSupportNavigateUp()
+    }
 }
