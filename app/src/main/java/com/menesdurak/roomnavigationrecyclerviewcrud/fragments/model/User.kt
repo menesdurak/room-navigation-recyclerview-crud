@@ -1,4 +1,4 @@
-package com.menesdurak.roomnavigationrecyclerviewcrud.data
+package com.menesdurak.roomnavigationrecyclerviewcrud.fragments.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

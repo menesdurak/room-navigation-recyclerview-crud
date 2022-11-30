@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.menesdurak.roomnavigationrecyclerviewcrud.R
-import com.menesdurak.roomnavigationrecyclerviewcrud.data.User
+import com.menesdurak.roomnavigationrecyclerviewcrud.fragments.model.User
 
 class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
 

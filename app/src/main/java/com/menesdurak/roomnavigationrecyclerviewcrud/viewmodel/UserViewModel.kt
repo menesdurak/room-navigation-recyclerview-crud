@@ -1,9 +1,12 @@
-package com.menesdurak.roomnavigationrecyclerviewcrud.data
+package com.menesdurak.roomnavigationrecyclerviewcrud.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.menesdurak.roomnavigationrecyclerviewcrud.data.UserDatabase
+import com.menesdurak.roomnavigationrecyclerviewcrud.repository.UserRepository
+import com.menesdurak.roomnavigationrecyclerviewcrud.fragments.model.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

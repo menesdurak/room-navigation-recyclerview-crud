@@ -1,6 +1,8 @@
-package com.menesdurak.roomnavigationrecyclerviewcrud.data
+package com.menesdurak.roomnavigationrecyclerviewcrud.repository
 
 import androidx.lifecycle.LiveData
+import com.menesdurak.roomnavigationrecyclerviewcrud.data.UserDao
+import com.menesdurak.roomnavigationrecyclerviewcrud.fragments.model.User
 
 class UserRepository(private val userDao: UserDao) {
 
