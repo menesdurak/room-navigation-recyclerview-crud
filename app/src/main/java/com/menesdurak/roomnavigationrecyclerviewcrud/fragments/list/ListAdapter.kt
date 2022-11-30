@@ -4,6 +4,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet.Layout
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.menesdurak.roomnavigationrecyclerviewcrud.R
 import com.menesdurak.roomnavigationrecyclerviewcrud.fragments.model.User
@@ -25,6 +28,12 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
         holder.itemView.findViewById<TextView>(R.id.firstName_txt).text = currentItem.firtName
         holder.itemView.findViewById<TextView>(R.id.lastName_txt).text = currentItem.lastName
         holder.itemView.findViewById<TextView>(R.id.age_txt).text = currentItem.age.toString()
+
+        holder.itemView.findViewById<ConstraintLayout>(R.id.rowLayout).setOnClickListener {
+            //With ListFragmentDirections we can pass our user object to our update fragment
+            val action = ListFragmentDirections.actionListFragmentToUpdateFragment(currentItem)
+            holder.itemView.findNavController().navigate(action)
+        }
     }
 
     override fun getItemCount(): Int = userList.size
