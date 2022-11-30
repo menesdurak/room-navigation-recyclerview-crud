@@ -5,12 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import com.menesdurak.roomnavigationrecyclerviewcrud.databinding.FragmentUpdateBinding
 
 class UpdateFragment : Fragment() {
     private var _binding: FragmentUpdateBinding? = null
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
+
+    private val args by navArgs<UpdateFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -19,6 +22,10 @@ class UpdateFragment : Fragment() {
     ): View? {
         _binding = FragmentUpdateBinding.inflate(inflater, container, false)
         val view = binding.root
+
+        binding.updateFirstNameEt.setText(args.currentUser.firstName)
+        binding.updateLastNameEt.setText(args.currentUser.lastName)
+        binding.updateAgeEt.setText(args.currentUser.age.toString())
         return view
     }
 }
