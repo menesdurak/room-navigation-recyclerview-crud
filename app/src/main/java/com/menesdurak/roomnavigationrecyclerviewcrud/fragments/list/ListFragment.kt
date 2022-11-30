@@ -13,7 +13,7 @@ class ListFragment : Fragment() {
 
     private var _binding: FragmentListBinding? = null
     // This property is only valid between onCreateView and
-        // onDestroyView.
+    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -24,6 +24,7 @@ class ListFragment : Fragment() {
         _binding = FragmentListBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        //Navigating from ListFragment to AddFragment
         binding.floatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_listFragment_to_addFragment)
         }
